@@ -19,4 +19,8 @@ class Vendor
       item.price * quantity
     end
   end
+
+  def sale (item, amount)
+    @inventory[item] -= amount
+  end
 end

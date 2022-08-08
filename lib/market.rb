@@ -51,4 +51,19 @@ class Market
       item.name
     end.sort
   end
+
+  def sale(item, amount)
+  amount_to_sell = amount
+  end
+
+  def can_sell?(item, amount)
+    items_by_quantity.any? do |i, q|
+      i == item && q >= amount
+    end
+  end
+
+  def sell(item, amount)
+    can_sell?(item, amount)
+  end
+
 end

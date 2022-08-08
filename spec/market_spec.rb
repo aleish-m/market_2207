@@ -103,4 +103,25 @@ describe Vendor do
       expect(market.date).to eq('22/07/2022')
     end
   end
+
+  describe 'Market sales' do
+    before :each do
+      @item5 = Item.new({name: 'Onion', price: '$0.25'})
+      @vendor3.stock(@item3, 10)
+
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+    end
+    it 'Market checks if it can sell enough of an item' do
+      expect(@market.sell(@item1, 200)).to be false
+      expect(@market.sell(@item5, 1)).to be false
+      expect(@market.sell(@item4, 5)).to be true
+    end
+
+    it 'Market sells items if it has enough' do
+      @market.sell(@item4, 5)
+      expect(@vendor2.check_stock(@item4)).to eq(45)
+    end
+  end
 end

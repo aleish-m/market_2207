@@ -95,4 +95,12 @@ describe Vendor do
       expect(@market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
     end
   end
+
+  describe 'Market Date' do
+    it 'Market has a Date it is created on' do
+      allow(Date).to receive(:today).and_return(Date.parse("2022-7-22"))
+      market = Market.new('South Pearl Street Farmers Market')
+      expect(market.date).to eq('22/07/2022')
+    end
+  end
 end

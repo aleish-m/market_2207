@@ -3,9 +3,9 @@ require './lib/item'
 
 describe Vendor do
   before :each do
-    @vendor = Vendor.new("Rocky Mountain Fresh")
-    @item1 = Item.new({name: 'Peach', price: "$0.75"})
-    @item2 = Item.new({name: 'Tomato', price: '$0.50'})
+    @vendor = Vendor.new('Rocky Mountain Fresh')
+    @item1 = Item.new({ name: 'Peach', price: '$0.75' })
+    @item2 = Item.new({ name: 'Tomato', price: '$0.50' })
   end
   describe 'initialize' do
     it 'Vendor exists' do
@@ -13,7 +13,7 @@ describe Vendor do
     end
 
     it 'Vendor has a name' do
-      expect(@vendor.name).to eq("Rocky Mountain Fresh")
+      expect(@vendor.name).to eq('Rocky Mountain Fresh')
     end
 
     it 'Vendor starts with no inventory' do
@@ -28,7 +28,7 @@ describe Vendor do
 
     it 'Vendor can add stock to inventory' do
       @vendor.stock(@item1, 30)
-       expect(@vendor.inventory).to eq({@item1 => 30})
+      expect(@vendor.inventory).to eq({ @item1 => 30 })
       expect(@vendor.check_stock(@item1)).to eq(30)
     end
 
@@ -42,20 +42,20 @@ describe Vendor do
       @vendor.stock(@item1, 30)
       @vendor.stock(@item1, 25)
       @vendor.stock(@item2, 12)
-       expect(@vendor.inventory).to eq({@item1 => 55, @item2 => 12})
+      expect(@vendor.inventory).to eq({ @item1 => 55, @item2 => 12 })
     end
   end
 
   describe 'Vendors revenue' do
     before :each do
-      @vendor1 = Vendor.new("Rocky Mountain Fresh")
-      @vendor2 = Vendor.new("Ba-Nom-a-Nom")
-      @vendor3 = Vendor.new("Palisade Peach Shack")
+      @vendor1 = Vendor.new('Rocky Mountain Fresh')
+      @vendor2 = Vendor.new('Ba-Nom-a-Nom')
+      @vendor3 = Vendor.new('Palisade Peach Shack')
 
-      @item1 = Item.new({name: 'Peach', price: "$0.75"})
-      @item2 = Item.new({name: 'Tomato', price: '$0.50'})
-      @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
-      @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+      @item1 = Item.new({ name: 'Peach', price: '$0.75' })
+      @item2 = Item.new({ name: 'Tomato', price: '$0.50' })
+      @item3 = Item.new({ name: 'Peach-Raspberry Nice Cream', price: '$5.30' })
+      @item4 = Item.new({ name: 'Banana Nice Cream', price: '$4.25' })
 
       @vendor1.stock(@item1, 35)
       @vendor1.stock(@item2, 7)
